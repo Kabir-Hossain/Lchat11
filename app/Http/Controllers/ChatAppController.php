@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ChatAppController extends Controller
 {
     public function chatapp(Request $request){
-        // dd($_POST); `
+        // dd($_POST); 
         $request->validate([
             'username' => 'required',
         ]);
@@ -19,6 +19,7 @@ class ChatAppController extends Controller
 
     public function firemsg(Request $request){  
         
+        // dd($request);
         MessageSent::dispatch($request->sender, $request->msg);
         return $request->all();
     }

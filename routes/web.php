@@ -17,4 +17,5 @@ Route::get('/chat', function () {
 });
 
 Route::post('/chat', [ChatAppController::class,'chatapp'])->name('chatapp');
+
 Route::post('/firemsg', [ChatAppController::class,'firemsg'])->name('firemsg');

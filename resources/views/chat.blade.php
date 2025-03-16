@@ -21,7 +21,6 @@
     @vite('resources/js/app.js')
 
     <!-- Chat Option -->
-
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -125,10 +124,8 @@
 
         /* Chat Body */
         .chat-body {
-            display: flex;
-            /* Use flexbox to align items */
+            display: flex;            
             flex-direction: column;
-            /* Stack messages vertically */
             flex: 1;
             padding: 15px;
             overflow-y: auto;
@@ -282,6 +279,7 @@
                             <span class="sender-name">${sender}</span></br><span>${response.msg}</span>
                         </div>
                     `);
+                    scrollToBottom();
                     
                     $('.chat-input').val('');
                 },
@@ -299,12 +297,20 @@
                             <span class="sender-name">${data.sender}</span></br><span>${data.message}</span>
                         </div>
                     `);
+                    scrollToBottom();
                 }
                 // console.log(data);
                 // alert(data);
             })
-        }       
+            
+        }      
        
+
+        function scrollToBottom() {
+            var chatBody = document.getElementById('chat-body');
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
     </script>
 
 </body>
