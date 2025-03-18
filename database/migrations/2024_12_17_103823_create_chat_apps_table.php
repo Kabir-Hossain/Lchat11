@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('chat_apps', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sender_id')->constrained('users')->onDelete('cascade'); // Sender
-            $table->foreignId('receiver_id')->constrained('users')->onDelete('cascade'); // Receiver
+            $table->integer('sender_id'); // Sender
+            $table->integer('receiver_id'); // Receiver
             $table->text('message'); // Message content
             $table->boolean('is_read')->default(false); // Read status
             $table->timestamp('sent_at')->useCurrent(); // Timestamp

@@ -263,17 +263,19 @@
 
         function SendMsg(){
             let sender = {!! json_encode($username ?? '') !!}; // Escaped properly            
+            let sender_id = 1;          
             let message = msg.value    
             // alert(message);
             $.ajax({
                 url: "{{ route('firemsg') }}",
                 method: 'POST',
                 data: {
+                    sender_id : sender_id,
                     sender : sender,
                     msg : message,
                     _token: "{{ csrf_token() }}"
                 },
-                success: function (response) {
+                success: function (response) {                
                     $('#chat-body').append(`
                         <div class="message outgoing">
                             <span class="sender-name">${sender}</span></br><span>${response.msg}</span>
@@ -291,6 +293,7 @@
 
         window.onload=()=>{
             window.Echo.channel('user-message').listen('MessageSent', function(data){
+                console.log(data);                
                 if(data.sender!= {!! json_encode($username ?? '') !!} ){
                     $('#chat-body').append(`
                         <div class="message incoming">

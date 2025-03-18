@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\ChatApp;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,11 +15,13 @@ class MessageSent implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $message;
     /**
      * Create a new event instance.
      */
-    public function __construct(public $sender, public $message)
+    public function __construct(ChatApp $message)
     {
+        $this->message = $message;
         // dd($sender, $message);
     }
 
@@ -31,6 +34,17 @@ class MessageSent implements ShouldBroadcastNow
     {
         return [
             new Channel('user-message'),
+        ];
+    }
+
+    public function broadcastWith()
+    {
+        return [
+            'id' => $this->message->id,
+            'sender_id' => $this->message->sender_id,
+            'receiver_id' => $this->message->receiver_id,
+            'message' => $this->message->message,
+            'sent_at' => $this->message->sent_at->toDateTimeString(),
         ];
     }
 }
