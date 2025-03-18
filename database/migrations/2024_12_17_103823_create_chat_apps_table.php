@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('chat_apps', function (Blueprint $table) {
             $table->id();
             $table->integer('sender_id'); // Sender
+            $table->string('sender'); // Sender
             $table->integer('receiver_id'); // Receiver
             $table->text('message'); // Message content
             $table->boolean('is_read')->default(false); // Read status

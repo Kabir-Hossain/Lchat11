@@ -20,11 +20,12 @@ class ChatAppController extends Controller
 
     public function firemsg(Request $request){  
         
-        // dd($request->all());
+        // dd($request->sender);
         
         // Insert message into database
         $message = ChatApp::create([
             'sender_id' => 2,
+            'sender' => $request->sender,
             'receiver_id' => 1,
             'message' => $request->msg,
             'is_read' => false,

@@ -42,6 +42,7 @@ class MessageSent implements ShouldBroadcastNow
         return [
             'id' => $this->message->id,
             'sender_id' => $this->message->sender_id,
+            'sender' => $this->message->sender,
             'receiver_id' => $this->message->receiver_id,
             'message' => $this->message->message,
             'sent_at' => $this->message->sent_at->toDateTimeString(),

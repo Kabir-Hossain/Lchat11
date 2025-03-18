@@ -13,6 +13,7 @@ class ChatApp extends Model
 
      protected $fillable = [
         'sender_id',
+        'sender',
         'receiver_id',
         'message',
         'is_read',
