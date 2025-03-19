@@ -195,32 +195,7 @@
             </div>
             @if(!empty($username))
             <div class="chat-body" id="chat-body">
-                {{-- <div class="message incoming">
-                    <span>As-Salamu Alaikum, How can I help You</span>
-                </div>
-                <div class="message outgoing">
-                    <span>I am looking for Car Battery</span>
-                </div>
-                <div class="message incoming">
-                    <span>Thank You Sir, We have 5 types of Car Battries</span>
-                    <span>What is Your Car Brand and Model</span>
-                </div>
-                <div class="message outgoing">
-                    <span>I am looking for Toyota Prius</span>
-                </div>
-                <div class="message incoming">
-                    <span>As-Salamu Alaikum, How can I help You</span>
-                </div>
-                <div class="message outgoing">
-                    <span>I am looking for Car Battery</span>
-                </div>
-                <div class="message incoming">
-                    <span>Thank You Sir, We have 5 types of Car Battries</span>
-                    <span>What is Your Car Brand and Model</span>
-                </div>
-                <div class="message outgoing">
-                    <span>I am looking for Toyota Prius</span>
-                </div> --}}
+
             </div> 
             <div class="chat-footer">
                 <input type="text" name="msg" id="msg" class="chat-input msg" placeholder="Type here and press enter...">
@@ -260,7 +235,6 @@
     </script>
 
     <script>
-
         function SendMsg(){
             let sender = {!! json_encode($username ?? '') !!}; // Escaped properly            
             let sender_id = 1;          
@@ -302,10 +276,7 @@
                     `);
                     scrollToBottom();
                 }
-                // console.log(data);
-                // alert(data);
-            })
-            
+            })            
         }      
        
 

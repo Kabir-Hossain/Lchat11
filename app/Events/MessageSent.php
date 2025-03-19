@@ -22,7 +22,6 @@ class MessageSent implements ShouldBroadcastNow
     public function __construct(ChatApp $message)
     {
         $this->message = $message;
-        // dd($sender, $message);
     }
 
     /**
@@ -32,8 +31,12 @@ class MessageSent implements ShouldBroadcastNow
      */
     public function broadcastOn(): array
     {
+        // return [
+        //     new Channel('user-message'),
+        // ];
+
         return [
-            new Channel('user-message'),
+            new PrivateChannel('chat.' . $this->message->receiver_id),
         ];
     }
 
